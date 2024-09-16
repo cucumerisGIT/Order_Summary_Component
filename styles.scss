@@ -1,0 +1,236 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+// Weights
+$red-hat-display-weight-light: 500;
+$red-hat-display-weight-normal: 700;
+$red-hat-display-weight-bold: 900;
+
+/* Variables */
+
+// Colors
+$white:             white;
+$pale-blue:         hsl(225, 100%, 94%);
+$bright-blue:       hsl(245, 75%, 52%);
+$very-pale-blue:    hsl(225, 100%, 98%);
+$desaturated-blue:  hsl(224, 23%, 55%);
+$dark-blue:         hsl(223, 47%, 23%);
+
+// Transition
+// $padding-breakpoint-transition: padding 0.5s ease;
+
+/* Selectors */
+
+html {
+    font-family: "Red Hat Display", sans-serif;
+    
+    background: url("images/pattern-background-mobile.svg"), $pale-blue;
+    background-repeat: repeat-x;
+
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100dvh;
+
+    margin: 0;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    max-width: 450px;
+    margin: auto 1.5rem;
+
+    border-radius: 1rem;
+
+    background: $white;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    max-width: inherit;
+
+    overflow: hidden;
+
+    /* Elemets */
+
+    &__illustration {
+        width: 100%;
+        object-fit: contain;
+
+        margin: 0 0 1rem 0;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: $red-hat-display-weight-bold;
+
+        color: $dark-blue;
+    }
+
+    &__advertisement {
+        text-align: center;
+
+        margin: 0;
+        padding: 0 clamp(1rem, 5vw, 3rem);
+
+        color: $desaturated-blue;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    padding: 0 clamp(1rem, 5vw, 3rem);;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+
+    border-radius: 15px;
+    
+    background: $very-pale-blue;
+
+    /* Elements */
+
+    &__icon {
+        height: 100%;
+        aspect-ratio: 1 / 1;
+
+        margin-right: 1rem;
+    }
+
+    &__item {
+        flex-grow: 1;
+        line-height: 1.5rem;
+
+        /* Elements */
+        
+        & > * {
+            margin: 0;
+        }
+
+        &__name {
+            font-weight: $red-hat-display-weight-bold;
+
+            color: $dark-blue;
+        }
+
+        &__price {
+            color: $desaturated-blue;
+        }
+    }
+
+    &__change-link {
+        font-weight: $red-hat-display-weight-bold;
+        font-size: 0.8rem;
+    }
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    margin-bottom: 1rem;
+
+    /* Elements */
+
+    & > button {
+        padding: 1rem;
+
+        border-radius: 10px;
+        border: none;
+
+        font-weight: $red-hat-display-weight-bold;
+    }
+    
+    &__payment {
+        color: $white;
+        background-color: $bright-blue;
+
+        box-shadow: 0px 10px 10px 5px $pale-blue;
+    }
+
+    &__cancel {
+        color: $desaturated-blue;
+        background-color: transparent;
+    }
+}
+
+/* Attribution */
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+/* Queries */
+
+@media (orientation: landscape) {
+    body {
+        min-height: calc(100dvh - 4rem);
+        margin: 2rem auto;
+    }
+}
+
+@media (min-width: 375px) {
+    html {
+        background: url("images/pattern-background-desktop.svg"), $pale-blue;
+        background-repeat: repeat-x;
+    }
+}
+
+@media (hover: hover) {
+    .button-container {
+        *:hover {
+            cursor: pointer;
+        }
+
+        &__payment:hover {
+            background-color: lighten($bright-blue, 20%);
+        }
+
+        &__cancel:hover {
+            color: darken($bright-blue, 20%);
+        }
+    }
+
+    .order__change-link:hover {
+        color: lighten($bright-blue, 20%);
+        text-decoration: none;
+    }
+}
